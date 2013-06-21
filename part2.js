@@ -3,7 +3,7 @@ var fs = require('fs');
 var cad = "";
 var nPrimes = 0;
 var primes = Array;
-nPrimes[nPrimes] = 2;
+primes[nPrimes] = 2;
 var cad = "2";
 var filename = "prime.txt";
 
@@ -21,6 +21,7 @@ for (var i = 3; i <= 100; i++){
 		cad += ","+i;
 	}
 }
+cad += "\n";
 fs.writeFileSync(filename,cad);
 console.log("Script: " + __filename + "\nWrote: " + cad + "\nTo: " + filename);
 
