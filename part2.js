@@ -1,27 +1,33 @@
 #!/usr/bin/env node
 var fs = require('fs');
 var cad = "";
-var nPrimes = 0;
-var primes = Array;
-primes[nPrimes] = 2;
+var primes = Array();
+primes.push(2);
 var cad = "2";
 var filename = "prime.txt";
+var num = 3;
+// 0 - 99
+while (primes.length < 100) {
+	
+//for (var i = 3; i <= 100; i++){
+	if (test(num,primes)) {
+		primes.push(num);
+		cad += ","+num;
+	}
+	num++;
 
-for (var i = 3; i <= 100; i++){
-	var prime = true;
-	for (var j = 0; j <= nPrimes;j++){
-		if (i % primes[j] == 0){
-			prime = false;
-			break;
-		}
-		
-	}
-	if (prime){
-		primes[++nPrimes]  = i;
-		cad += ","+i;
-	}
 }
-cad += "\n";
 fs.writeFileSync(filename,cad);
+//console.log("nPrimos = "+nPrimes);
 console.log("Script: " + __filename + "\nWrote: " + cad + "\nTo: " + filename);
+function test (num, primes){
+//	console.log("length="+primes.length);
+	for (var i = 0; i < primes.length; i++){
+		if (num % primes[i] == 0)
+			return false;
+	}
+	return true;
+
+}
+
 
